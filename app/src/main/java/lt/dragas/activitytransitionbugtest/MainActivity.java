@@ -1,13 +1,15 @@
 package lt.dragas.activitytransitionbugtest;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends Activity
 {
 
     @Override
@@ -18,10 +20,11 @@ public class MainActivity extends AppCompatActivity
         final TextView textView1 = (TextView)findViewById(R.id.textView1);
         textView1.setOnClickListener(new View.OnClickListener()
         {
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v)
             {
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, textView1, getString(R.string.app_name));
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, textView1, getString(R.string.app_name));
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(intent, options.toBundle());
             }

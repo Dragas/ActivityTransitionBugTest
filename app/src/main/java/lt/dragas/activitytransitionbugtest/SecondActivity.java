@@ -1,9 +1,9 @@
 package lt.dragas.activitytransitionbugtest;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
-public class SecondActivity extends AppCompatActivity
+public class SecondActivity extends Activity
 {
 
     @Override
